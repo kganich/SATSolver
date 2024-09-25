@@ -38,8 +38,6 @@ This project consists of two main files:
   - Recursively splitting on literals and attempting both assignments (true/false) until a solution is found or determined to be unsatisfiable.
 - **simplify**: Simplifies the formula by removing clauses satisfied by a given literal and removing occurrences of the negated literal.
 - **step**: Repeatedly performs unit propagation and pure literal elimination.
-- **firstLiteral**: Selects the first literal from the formula for further processing.
-- **elemL**: Checks if the formula contains an empty clause, which would indicate unsatisfiability.
 
 ## Prerequisites
 
