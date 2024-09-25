@@ -7,10 +7,6 @@ This Haskell project implements a SAT (Satisfiability) solver using the DPLL (Da
 
 A SAT solver is a tool designed to solve Boolean satisfiability problems (SAT). The SAT problem is the problem of determining whether there exists an assignment of variables that satisfies a given Boolean formula expressed in Conjunctive Normal Form (CNF). If such an assignment exists, the formula is called satisfiable (`SAT`), otherwise, it is unsatisfiable (`UNSAT`).
 
-### Conjunctive Normal Form (CNF)
-A CNF is a conjunction of clauses, where each clause is a disjunction of literals. For example:
-- Formula: (x1 ∨ ¬x2) ∧ (¬x1 ∨ x3)
-
 ### DPLL Algorithm
 
 The DPLL algorithm is a backtracking-based search algorithm used to determine the satisfiability of a logical formula in CNF. It operates with the following main steps:
@@ -53,11 +49,14 @@ To install GHC, visit the [official GHC website](https://www.haskell.org/ghc/).
 
 ## How to Run
 
-1. Clone the repository or download the code files (`satsolver.hs` and `dpll.hs`).
-   
-2. Compile the project using GHC:
+1. Launch your terminal and start GHCi by typing:
    ```bash
-   ghc -o satsolver satsolver.hs dpll.hs
+   ghci
+   ```
+   
+2. Load Haskell file:
+   ```bash
+   ghci> :l satsolver
    ```
 
 3. Prepare your SAT problem in DIMACS format. An example format would look like:
@@ -77,14 +76,14 @@ eg x_3)
 
 4. Run the SAT solver by passing the input and output file paths:
    ```bash
-   ./satsolver input.cnf output.txt
+   ghci> solveSAT "test.txt" "solution.txt"
    ```
 
 5. The result will be either `SAT` with the variable assignments or `UNSAT`.
 
 ## Example
 
-Given an input file `input.cnf`:
+Given an input file `input.txt`:
 ```
 p cnf 3 3
 1 -2 0
@@ -94,7 +93,12 @@ p cnf 3 3
 
 Run the solver:
 ```bash
-./satsolver input.cnf output.txt
+ghci> :load satsolver.hs dpll.hs
+[1 of 2] Compiling DPLL             ( dpll.hs, interpreted )
+[2 of 2] Compiling SATSolver         ( satsolver.hs, interpreted )
+Ok, modules loaded: DPLL, SATSolver.
+ghci> solveSAT "input.txt" "output.txt"
+
 ```
 
 If the problem is satisfiable, the output file will contain the satisfying assignment of variables:
